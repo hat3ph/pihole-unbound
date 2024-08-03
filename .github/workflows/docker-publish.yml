@@ -91,7 +91,7 @@ jobs:
           outputs: type=image,name=target,annotation-index.org.opencontainers.image.description=Pihole-Unbound multi-arch image
           tags: |
             ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:2024.05.0
+            ghcr.io/${{ github.repository }}:2024.07.0
 
       # Sign the resulting Docker image digest except on PRs.
       # This will only write to the public Rekor transparency log when the Docker
