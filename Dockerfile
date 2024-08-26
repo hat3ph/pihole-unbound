@@ -4,7 +4,7 @@ FROM pihole/pihole:2024.07.0
 RUN apt update && apt install -y unbound
 
 # download root.hints files
-RUN curl -o /tmp/root.hints https://www.internic.net/domain/named.root
+RUN curl -o /var/lib/unbound/root.hints https://www.internic.net/domain/named.root
 
 # copy unbound setup
 COPY lighttpd-external.conf /etc/lighttpd/external.conf 
