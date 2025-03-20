@@ -1,5 +1,5 @@
 # using pihole docker image
-FROM pihole/pihole:2025.02.7
+FROM pihole/pihole:2025.03.0
 # install unbound
 RUN apk update && apk add unbound
 
