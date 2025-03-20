@@ -15,4 +15,7 @@ COPY 99-edns.conf /etc/dnsmasq.d/99-edns.conf
 #COPY unbound-run /etc/services.d/unbound/run
 #RUN chmod +x /etc/services.d/unbound/run
 
+COPY custom-entrypoint.sh /custom-entrypoint.sh
+RUN chmod +x /custom-entrypoint.sh
+
 ENTRYPOINT ["/custom-entrypoint.sh"]
