@@ -1,7 +1,7 @@
 # using pihole docker image
 FROM pihole/pihole:2025.02.0
 # install unbound
-RUN apt update && apt install -y unbound
+RUN apk update && apk add unbound
 
 # download root.hints files
 RUN curl -o /var/lib/unbound/root.hints https://www.internic.net/domain/named.root
