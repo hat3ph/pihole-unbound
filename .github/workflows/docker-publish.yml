@@ -75,6 +75,14 @@ jobs:
       #  with:
       #    images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
+      # Extract PiHole version from Dockerfile
+      - name: Extract PiHole version from Dockerfile
+        id: extract-version
+        run: |
+          VERSION=$(grep -oP '(?<=pihole/pihole:)\S+' Dockerfile)
+          echo "Extracted PiHole version is: $VERSION"
+          echo "PIHOLE_VERSION=$VERSION" >> "$GITHUB_OUTPUT"
+
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
       - name: Build and push Docker image
@@ -91,7 +99,7 @@ jobs:
           outputs: type=image,name=target,annotation-index.org.opencontainers.image.description=Pihole-Unbound multi-arch image
           tags: |
             ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:2024.07.0
+            ghcr.io/${{ github.repository }}:${{ steps.extract-version.outputs.PIHOLE_VERSION }}
 
       # Sign the resulting Docker image digest except on PRs.
       # This will only write to the public Rekor transparency log when the Docker

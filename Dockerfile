@@ -1,5 +1,5 @@
 # using pihole docker image
-FROM pihole/pihole:2024.07.0
+FROM pihole/pihole:2025.02.0
 # install unbound
 RUN apt update && apt install -y unbound
 
